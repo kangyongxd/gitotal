@@ -26,14 +26,14 @@ function getAllStatus() {
   })
 }
 
-function commitAll(message) {
+function submitAll(msg) {
   const files = getAllGitDir();
   console.log(chalk.blue(`total: ${files.length}`));
   console.log();
   files.forEach(file => {
     git(file)
       .add('./*')
-      .commit(`feat: ${message} && commit by gitotal`)
+      .commit(`feat: submit by gitotal : ${msg} `)
       .push('kang', 'master', () => {
         console.log(chalk.blue(`commit and push success: ${file}`));
       })
@@ -43,5 +43,5 @@ function commitAll(message) {
 module.exports = {
   getAllGit,
   getAllStatus,
-  commitAll,
+  submitAll,
 }
