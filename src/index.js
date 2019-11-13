@@ -35,7 +35,7 @@ function commitAll(message) {
       .add('./*')
       .commit(`feat: ${message} && commit by gitotal`)
       .push('kang', 'master', () => {
-        console.log(`commit and push success: ${file}`);
+        console.log(chalk.blue(`commit and push success: ${file}`));
       })
   })
 }
