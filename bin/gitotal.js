@@ -20,7 +20,7 @@ commander
   })
 
 commander
-  .command('commit [message]')
+  .command('submit [message]')
   .description('list all the git program under current directory')
   .action((message) => {
     commitAll(message)

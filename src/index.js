@@ -1,10 +1,6 @@
 const git = require('simple-git')
 const chalk = require('chalk');
-const fse = require('fs-extra');
-const path = require('path');
 const glob = require('glob');
-
-const curDir = process.cwd();
 
 function getAllGitDir() {
   // 找到当前目录下一级 具有 .git 子文件夹的 目录
@@ -13,20 +9,14 @@ function getAllGitDir() {
   return files;
 }
 
-function loopAllGit(cb) {
-  const files = getAllGitDir();
-  files.forEach(file => {
-    cb(file);
-  })
-}
-
 function getAllGit() {
   const files = getAllGitDir();
   console.log(files);
 }
 
 function getAllStatus() {
-  loopAllGit(file => {
+  const files = getAllGitDir();
+  files.forEach(file => {
     git(file).status((err, log) => {
       console.log(chalk.blue(`--- about ${file} ---`));
       console.log();
@@ -37,12 +27,15 @@ function getAllStatus() {
 }
 
 function commitAll(message) {
-  loopAllGit(file => {
+  const files = getAllGitDir();
+  console.log(chalk.blue(`total: ${files.length}`));
+  console.log();
+  files.forEach(file => {
     git(file)
       .add('./*')
-      .commit(`${message}-commit by gitotal`)
+      .commit(`${message} && commit by gitotal`)
       .push('kang', 'master', () => {
-        console.log(`${file} commit and push success`);
+        console.log(`commit and push success: ${file}`);
       })
   })
 }
