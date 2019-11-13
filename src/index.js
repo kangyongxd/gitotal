@@ -33,7 +33,7 @@ function commitAll(message) {
   files.forEach(file => {
     git(file)
       .add('./*')
-      .commit(`${message} && commit by gitotal`)
+      .commit(`feat: ${message} && commit by gitotal`)
       .push('kang', 'master', () => {
         console.log(`commit and push success: ${file}`);
       })
