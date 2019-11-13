@@ -20,10 +20,9 @@ commander
   })
 
 commander
-  .command('submit [message]')
+  .command('submit <origin> <branch>')
   .description('list all the git program under current directory')
-  .action((message) => {
-    let msg = message || '-.-'
-    submitAll(msg)
+  .action((origin, branch) => {
+    submitAll(origin, branch)
   })
 commander.parse(process.argv);

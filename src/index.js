@@ -20,21 +20,21 @@ function getAllStatus() {
     git(file).status((err, log) => {
       console.log(chalk.blue(`--- about ${file} ---`));
       console.log();
-      console.log(log.not_added);
+      console.log(log);
       console.log();
     })
   })
 }
 
-function submitAll(msg) {
+function submitAll(origin, branch) {
   const files = getAllGitDir();
   console.log(chalk.blue(`total: ${files.length}`));
   console.log();
   files.forEach(file => {
     git(file)
       .add('./*')
-      .commit(`feat: submit by gitotal : ${msg} `)
-      .push('kang', 'master', () => {
+      .commit(`feat: submit by gitotal`)
+      .push(origin, branch, () => {
         console.log(chalk.blue(`commit and push success: ${file}`));
       })
   })
