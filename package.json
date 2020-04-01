@@ -1,7 +1,7 @@
 {
-  "name": "@kang/gitotal",
+  "name": "gitotal",
   "version": "0.0.1",
-  "description": "`cnpm i -g gitotal` `gitotal --version` `gitotal --help`",
+  "description": "gitotal",
   "bin": {
     "gitotal": "bin/gitotal.js"
   },
