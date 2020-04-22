@@ -1,6 +1,6 @@
 {
   "name": "gitotal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "gitotal",
   "bin": {
     "gitotal": "bin/gitotal.js"

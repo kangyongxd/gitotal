@@ -11,11 +11,23 @@ function getAllGitDir() {
 
 function getAllGit() {
   const files = getAllGitDir();
+
+  if(!files.length) {
+    console.log(chalk.blue(`当前目录下无 git 项目`));
+    return;
+  }
+
   console.log(files);
 }
 
 function getAllStatus() {
   const files = getAllGitDir();
+
+  if(!files.length) {
+    console.log(chalk.blue(`当前目录下无 git 项目`));
+    return;
+  }
+
   files.forEach(file => {
     git(file).status((err, log) => {
       console.log(chalk.blue(`--- about ${file} ---`));
@@ -28,6 +40,12 @@ function getAllStatus() {
 
 function submitAll(origin, branch) {
   const files = getAllGitDir();
+
+  if(!files.length) {
+    console.log(chalk.blue(`当前目录下无 git 项目`));
+    return;
+  }
+
   console.log(chalk.blue(`total: ${files.length}`));
   console.log();
   files.forEach(file => {
